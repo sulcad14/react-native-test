@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, ScrollView, TextInput, View, Image } from 'react-native';
-import { Text, Header, Avatar, ListItem } from 'react-native-elements';
+import { StyleSheet, ScrollView, View } from 'react-native';
+import { Text, Header, Avatar, ListItem, Input } from 'react-native-elements';
 
 const styles = StyleSheet.create({
     container: 
@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#DDDDDD',
     },
+    input: 
+    {
+        padding: 5
+    }
 });
 
 const Contacts = () => 
@@ -62,9 +66,10 @@ const Contacts = () =>
     return (
         <View style={styles.container}>
             <Header centerComponent={{ text: 'CONTACTS', style: { color: '#fff', bottom: 5, fontWeight: 'bold' } }} />
+            <Input placeholder='Search' leftIcon={{ type: 'font-awesome', name: 'search' }} containerStyle={styles.input} />
             <ScrollView>
                 {contactList.map((contact, index) => (
-                    <ListItem key={index} bottomDivider>
+                    <ListItem key={index} bottomDivider containerStyle={styles.container}>
                         <Avatar icon={{ name: 'user', type: 'font-awesome', color: 'black', size: 40 }} />
                         <ListItem.Content>
                             <ListItem.Title>{contact.name}</ListItem.Title>
