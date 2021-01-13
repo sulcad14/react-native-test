@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { Text, Header, Avatar, ListItem, Badge, SearchBar } from 'react-native-elements';
+import { Header, Avatar, ListItem, Badge, SearchBar } from 'react-native-elements';
 
 const styles = StyleSheet.create({
-    container: 
+    container:
     {
         flex: 1,
         backgroundColor: '#DDDDDD',
     },
-    badge: 
+    badge:
     {
         bottom: 20,
         right: 25
     },
-    search: 
+    search:
     {
-        backgroundColor: '#DDDDDD',   
+        backgroundColor: '#DDDDDD',
     }
 });
 
-const Contacts = () => 
+const Contacts = () =>
 {
     const [search, setSearch] = useState('');
-    const onSearchChange = (search) => 
+    const onSearchChange = (search) =>
     {
         setSearch(search);
     }

@@ -1,20 +1,22 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Homepage, Contacts, Shop } from './models';
+import { Homepage, Contacts, Shop, BillingForm } from './models';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const App = () => 
+const App = () =>
 {
-    const returnIcon = (focused, iconName) => 
+    const returnIcon = (focused, iconName) =>
     {
-        if (focused) 
+        if (focused)
         {
             return <MaterialCommunityIcons name={iconName} color={"#0099ff"} size={30} />;
         }
-        else 
+        else
         {
             return <MaterialCommunityIcons name={iconName} color={"#a6a6a6"} size={30} />;
         }
@@ -23,25 +25,25 @@ const App = () =>
     return (
         <NavigationContainer>
             <Tab.Navigator>
-                <Tab.Screen 
-                    name="Home" 
-                    component={Homepage} 
+                <Tab.Screen
+                    name="Home"
+                    component={Homepage}
                     options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "home") }}
                 />
-                <Tab.Screen 
-                    name="Contacts" 
+                <Tab.Screen
+                    name="Contacts"
                     component={Contacts}
-                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "account-box") }} 
+                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "account-box") }}
                 />
-                <Tab.Screen 
-                    name="Shop" 
+                <Tab.Screen
+                    name="Shop"
                     component={Shop}
-                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "cart") }} 
+                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "cart") }}
                 />
-                <Tab.Screen 
-                    name="Item 4" 
+                <Tab.Screen
+                    name="Item 4"
                     component={Homepage}
-                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "bell-circle") }} 
+                    options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "bell-circle") }}
                 />
             </Tab.Navigator>
         </NavigationContainer>
