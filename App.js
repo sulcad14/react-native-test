@@ -3,10 +3,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Homepage, Contacts, Shop, BillingForm } from './models';
+import { Homepage, Contacts, Shop, Info, BillingForm } from './models';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+const ShopStack = () =>
+{
+    return (
+        <Stack.Navigator initialRouteName="Shop" headerMode="none">
+            <Stack.Screen name="Shop" component={Shop} />
+            <Stack.Screen name="BillingForm" component={BillingForm} />
+        </Stack.Navigator>
+    );
+}
 
 const App = () =>
 {
@@ -37,12 +47,12 @@ const App = () =>
                 />
                 <Tab.Screen
                     name="Shop"
-                    component={Shop}
+                    component={ShopStack}
                     options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "cart") }}
                 />
                 <Tab.Screen
-                    name="Item 4"
-                    component={Homepage}
+                    name="Info"
+                    component={Info}
                     options={{ tabBarIcon: ({ focused, color, size }) => returnIcon(focused, "bell-circle") }}
                 />
             </Tab.Navigator>

@@ -10,10 +10,15 @@ const styles = StyleSheet.create({
     },
     badge:
     {
-        bottom: 20,
-        right: 25
+        top: 5,
+        left: 40,
+        position: 'absolute'
     },
     search:
+    {
+        backgroundColor: '#DDDDDD',
+    },
+    items:
     {
         backgroundColor: '#DDDDDD',
     }
@@ -22,6 +27,7 @@ const styles = StyleSheet.create({
 const Contacts = () =>
 {
     const [search, setSearch] = useState('');
+
     const onSearchChange = (search) =>
     {
         setSearch(search);
@@ -80,12 +86,16 @@ const Contacts = () =>
             <SearchBar placeholder="Search" onChangeText={onSearchChange} value={search} lightTheme containerStyle={styles.search} />
             <ScrollView>
                 {contactList.map((contact, index) => (
-                    <ListItem key={index} bottomDivider containerStyle={styles.container}>
+                    <ListItem key={index} bottomDivider containerStyle={styles.items}>
                         <Avatar icon={{ name: 'user', type: 'font-awesome', color: 'black', size: 40 }} />
                         {contact.name === "Amy Farha" ?
-                            <Badge status="error" value="2" containerStyle={styles.badge} />
+                            <View style={styles.badge}>
+                                <Badge status="error" value="2" />
+                            </View>
                         :
-                            null
+                            <View style={styles.badge}>
+                                <Badge status="success" />
+                            </View>
                         }
                         <ListItem.Content>
                             <ListItem.Title>{contact.name}</ListItem.Title>

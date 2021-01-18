@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { PricingCard, Header, Text, Overlay, Input } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { PricingCard, Header } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import BillingForm from './';
 
 const styles = StyleSheet.create({
     container:
@@ -24,18 +21,13 @@ const styles = StyleSheet.create({
     }
 });
 
-const Stack = createStackNavigator();
-
 const Shop = () =>
 {
-    const [modal, setModal] = useState(false);
-    const [type, setType] = useState(null);
     const navigation = useNavigation();
 
     const openModal = (type) =>
     {
-        setModal(true);
-        setType(type);
+        navigation.navigate('BillingForm', { type: type });
     }
 
     return (
@@ -56,7 +48,7 @@ const Shop = () =>
                     price="$20"
                     info={['5 Users', 'Basic Support', 'All Core Features']}
                     button={{ title: 'GET STARTED' }}
-                    onButtonPress={() => navigation.navigate('BillingForm')}
+                    onButtonPress={() => openModal("Starter")}
                 />
                 <PricingCard
                     color="#3333cc"
@@ -64,14 +56,8 @@ const Shop = () =>
                     price="$50"
                     info={['20 Users', 'Basic Support', 'All Core Features']}
                     button={{ title: 'GET STARTED' }}
+                    onButtonPress={() => openModal("Pro")}
                 />
-                <Overlay isVisible={modal} onBackdropPress={() => setModal(false)} overlayStyle={styles.modal}>
-                    <View style={styles.innerView}>
-                        <Text h3>Billing Form</Text>
-                        <Input placeholder='Name' leftIcon={<Icon name='user' size={20} color='black' />} />
-                        <Input placeholder='Surname' leftIcon={<Icon name='user' size={20} color='black' />} />
-                    </View>
-                </Overlay>
             </ScrollView>
         </View>
     );
