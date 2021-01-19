@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     items:
     {
         backgroundColor: '#DDDDDD',
+    },
+    searchInput:
+    {
+        color: 'black'
     }
 });
 
@@ -83,7 +87,7 @@ const Contacts = () =>
     return (
         <View style={styles.container}>
             <Header centerComponent={{ text: 'CONTACTS', style: { color: '#fff', bottom: 5, fontWeight: 'bold' } }} />
-            <SearchBar placeholder="Search" onChangeText={onSearchChange} value={search} lightTheme containerStyle={styles.search} />
+            <SearchBar placeholder="Search" onChangeText={onSearchChange} value={search} lightTheme containerStyle={styles.search} inputStyle={styles.searchInput} />
             <ScrollView>
                 {contactList.map((contact, index) => (
                     <ListItem key={index} bottomDivider containerStyle={styles.items}>

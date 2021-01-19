@@ -25,7 +25,7 @@ const Shop = () =>
 {
     const navigation = useNavigation();
 
-    const openModal = (type) =>
+    const openBillingForm = (type) =>
     {
         navigation.navigate('BillingForm', { type: type });
     }
@@ -40,7 +40,7 @@ const Shop = () =>
                     price="$0"
                     info={['1 User', 'Basic Support', 'All Core Features']}
                     button={{ title: 'GET STARTED' }}
-                    onButtonPress={() => openModal("Free")}
+                    onButtonPress={() => openBillingForm("Free")}
                 />
                 <PricingCard
                     color="#9900cc"
@@ -48,7 +48,7 @@ const Shop = () =>
                     price="$20"
                     info={['5 Users', 'Basic Support', 'All Core Features']}
                     button={{ title: 'GET STARTED' }}
-                    onButtonPress={() => openModal("Starter")}
+                    onButtonPress={() => openBillingForm("Starter")}
                 />
                 <PricingCard
                     color="#3333cc"
@@ -56,7 +56,7 @@ const Shop = () =>
                     price="$50"
                     info={['20 Users', 'Basic Support', 'All Core Features']}
                     button={{ title: 'GET STARTED' }}
-                    onButtonPress={() => openModal("Pro")}
+                    onButtonPress={() => openBillingForm("Pro")}
                 />
             </ScrollView>
         </View>
