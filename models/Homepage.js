@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Image } from 'react-native';
-import { Text, Header } from 'react-native-elements';
+import { StyleSheet, View, Linking } from 'react-native';
+import { Text, Header, Card } from 'react-native-elements';
 
 const styles = StyleSheet.create({
     container:
@@ -8,29 +8,40 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#DDDDDD',
     },
-    img:
+    card:
     {
-        width: 120,
-        height: 120,
-        top: 10
+        height: '40%'
     },
-    inner:
+    textView:
     {
-        alignItems: 'center',
+        textAlign: "center"
     }
 });
 
 const Homepage = () =>
 {
-  return (
-    <View style={styles.container}>
-        <Header centerComponent={{ text: 'HOMEPAGE', style: { color: '#fff', bottom: 5, fontWeight: 'bold' } }} />
-        <View style={styles.inner}>
-            <Text h2>React Native App</Text>
-            <Image source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} style={styles.img} />
+    const redirect = () =>
+    {
+        Linking.openURL('https://reactnative.dev/');
+    }
+
+    return (
+        <View style={styles.container}>
+            <Header centerComponent={{ text: 'HOMEPAGE', style: { color: '#fff', bottom: 5, fontWeight: 'bold' } }} />
+            <Card containerStyle={styles.card}>
+                <Card.Title>Welcome</Card.Title>
+                <Card.Divider />
+                <View style={styles.textView}>
+                    <Text>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Mauris dictum facilisis augue. Aliquam erat volutpat. Mauris metus. Aenean id metus id velit ullamcorper pulvinar.</Text>
+                </View>
+            </Card>
+            <Card containerStyle={styles.card}>
+                <Card.Title>React Native</Card.Title>
+                <Card.Divider />
+                <Card.Image source={{ uri: "https://blog.wildix.com/wp-content/uploads/2020/06/react-logo.jpg" }} onPress={redirect} />
+            </Card>
         </View>
-    </View>
-  );
+    );
 }
 
 export default Homepage;
